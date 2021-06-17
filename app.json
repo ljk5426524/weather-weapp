@@ -1,8 +1,6 @@
 {
   "pages":[
-    "pages/weather/weather",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/weather/weather"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -11,9 +9,9 @@
     "navigationBarTextStyle":"black"
   },
   "usingComponents":{
-    "iconfont": "./components/iconfont/iconfont"
+    "iconfont": "./components/iconfont/iconfont",
+    "van-loading": "./miniprogram_npm/@vant/weapp/loading/index"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

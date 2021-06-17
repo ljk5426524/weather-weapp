@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // qingtian | wanqingtian | bingbao2 | bingbao | dafengyouwu | dafeng | dawutian2 | dalei | duoyunyouwu | dafeng2 | dawutian | sanjifeng | duoyunyoudafeng | longjuanfeng | taiyang | leizhenyu2 | leizhenyu | guafengxiayu | jufeng | leizhenyu3 | duoyunyoufeng | xiayu | shuangshandian | xiayu2 | daxue | xiaoyu | yejianyouyu | youwu | xiaxue | xiaoxue | youwu2 | youfeng | youwu3 | zhongxue | yintian | xiaofeng | yusan
+    // huaban | qingtian | wanqingtian | bingbao2 | bingbao | dafengyouwu | dafeng | dawutian2 | dalei | duoyunyouwu | dafeng2 | dawutian | sanjifeng | duoyunyoudafeng | longjuanfeng | taiyang | leizhenyu2 | leizhenyu | guafengxiayu | jufeng | leizhenyu3 | duoyunyoufeng | xiayu | shuangshandian | xiayu2 | daxue | xiaoyu | yejianyouyu | youwu | xiaxue | xiaoxue | youwu2 | youfeng | youwu3 | zhongxue | yintian | xiaofeng | yusan
     name: {
       type: String,
     },

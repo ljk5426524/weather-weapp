@@ -13,7 +13,8 @@ Page({
     weatherList:[],
     userRefuse:false,
     sentence:'',
-    who:''
+    who:'',
+    loadingShow:true,
   },
 
   /**
@@ -68,7 +69,8 @@ Page({
         this.setData({
           userRefuse:false,
           locationData:data.forecast,
-          weatherList: list
+          weatherList: list,
+          loadingShow:false
         })
       },
       fail:(error)=>{

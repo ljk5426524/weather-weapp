@@ -6,14 +6,18 @@
       {{locationData.province}}{{locationData.city}}
     </view>
     <view class="banner-content">
-      <image class="banner" src="../../res/images/banner.png"></image>
+      <!-- <image class="banner" src="../../res/images/banner.png"></image> -->
       <view class="day-sentence">
-        <view class="banner-title">小憩一下</view>
+        <!-- <view class="banner-title">小憩一下</view> -->
         <view>{{sentence}}</view>
         <view class="sentence-from" wx:if="{{who}}">- {{who}}</view>
       </view>
     </view>
-      <view class="time-content">
+    <view class="hr-content">
+      <iconfont name="huaban" size="50" color="#fff"></iconfont>
+      <view class="hr"></view>
+    </view>
+    <view class="time-content">
       <view class="time-sun">
         <iconfont name="qingtian" size="30"></iconfont>
         日间
@@ -23,114 +27,120 @@
         夜间
       </view>
     </view>
-    <view class="next-content" wx:for="{{weatherList}}" wx:key="id">
-      <view class="date-text">{{item.day}} /<text class="week-text">{{item.week}}</text></view>
-      <view class="weather-content">
-        <view class="dayweather-content">
-          <iconfont name="bingbao" wx:if="{{item.dayweather === '雷阵雨并伴有冰雹'}}" size="50"></iconfont>
-          <iconfont name="youfeng" wx:if="{{item.dayweather === '少云'}}" size="50"></iconfont>
-          <iconfont name="dafeng"
-            wx:if="{{item.dayweather === '强风/劲风'||item.dayweather === '疾风'||item.dayweather === '大风'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaofeng"
-            wx:if="{{item.dayweather === '有风' ||item.dayweather === '微风'||item.dayweather === '和风'||item.dayweather === '清风'}}"
-            size="50"></iconfont>
-          <iconfont name="taiyang" wx:if="{{item.dayweather === '晴'}}" size="50"></iconfont>
-          <iconfont name="leizhenyu"
-            wx:if="{{item.dayweather === '阵雨' || item.dayweather === '雷阵雨' || item.dayweather === '强阵雨' || item.dayweather === '强雷阵雨'}}"
-            size="50"></iconfont>
-          <iconfont name="yusan"
-            wx:if="{{item.dayweather === '雨' || item.dayweather === '小雨' || item.dayweather === '毛毛雨/细雨' || item.dayweather === '小雨-中雨'}}"
-            size="50">
-          </iconfont>
-          <iconfont name="xiaoyu" wx:if="{{item.dayweather === '中雨' || item.dayweather === '中雨-大雨'}}" size="50">
-          </iconfont>
-          <iconfont name="xiayu"
-            wx:if="{{item.dayweather === '大雨' || item.dayweather === '暴雨' || item.dayweather === '大暴雨' || item.dayweather === '特大暴雨' || item.dayweather === '极端降雨' || item.dayweather === '大雨' || item.dayweather === '大雨-暴雨' || item.dayweather === '暴雨-大暴雨' || item.dayweather === '大暴雨-特大暴雨'}}"
-            size="50"></iconfont>
-          <iconfont name="daxue" wx:if="{{item.dayweather === '暴雪' || item.dayweather === '大雪-暴雪'}}" size="50">
-          </iconfont>
-          <iconfont name="zhongxue" wx:if="{{item.dayweather === '大雪' || item.dayweather === '中雪-大雪'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaoxue" wx:if="{{item.dayweather === '中雪' || item.dayweather === '小雪-中雪'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaxue"
-            wx:if="{{item.dayweather === '雪' || item.dayweather === '阵雪' || item.dayweather === '小雪' || item.dayweather === '雨雪天气' || item.dayweather === '雨夹雪' || item.dayweather === '阵雨夹雪'}}"
-            size="50">
-          </iconfont>
-          <iconfont name="youwu"
-            wx:if="{{item.dayweather === '雾' || item.dayweather === '浓雾' || item.dayweather === '强浓雾' || item.dayweather === '轻雾' || item.dayweather === '大雾' || item.dayweather === '特强浓雾'}}"
-            size="50"></iconfont>
-          <iconfont name="duoyunyoufeng" wx:if="{{item.dayweather === '多云' || item.dayweather === '晴间多云'}}" size="50">
-          </iconfont>
-          <iconfont name="longjuanfeng"
-            wx:if="{{item.dayweather === '烈风' ||item.dayweather === '风暴' || item.dayweather === '狂爆风' || item.dayweather === '飓风'||item.dayweather === '热带风暴' || item.dayweather === '龙卷风'}}"
-            size="50"></iconfont>
-          <iconfont name="yintian" wx:if="{{item.dayweather === '阴'}}" size="50"></iconfont>
-          <iconfont name="bingbao2" wx:if="{{item.dayweather === '冻雨'}}" size="50"></iconfont>
-          <iconfont name="dawutian"
-            wx:if="{{item.dayweather === '霾' || item.dayweather === '中度霾' || item.dayweather === '重度霾' || item.dayweather === '严重霾'}}"
-            size="50"></iconfont>
-          <iconfont name="dafengyouwu"
-            wx:if="{{item.dayweather === '浮尘' || item.dayweather === '扬沙' || item.dayweather === '沙尘暴' || item.dayweather === '强沙尘暴'}}"
-            size="50"></iconfont>
-          {{item.dayweather}}
-          <view>温度：{{item.daytemp}}</view>
-          <view>{{item.daywind}}风：{{item.daypower}}级</view>
+    <view wx:if="{{loadingShow}}" class="loading-content">
+      <van-loading color="#1989fa" />
+    </view>
+    <view wx:else>
+      <view class="next-content" wx:for="{{weatherList}}" wx:key="id">
+        <view class="date-text">{{item.day}} /<text class="week-text">{{item.week}}</text></view>
+        <view class="weather-content">
+          <view class="dayweather-content">
+            <iconfont name="bingbao" wx:if="{{item.dayweather === '雷阵雨并伴有冰雹'}}" size="50"></iconfont>
+            <iconfont name="youfeng" wx:if="{{item.dayweather === '少云'}}" size="50"></iconfont>
+            <iconfont name="dafeng"
+              wx:if="{{item.dayweather === '强风/劲风'||item.dayweather === '疾风'||item.dayweather === '大风'}}" size="50">
+            </iconfont>
+            <iconfont name="xiaofeng"
+              wx:if="{{item.dayweather === '有风' ||item.dayweather === '微风'||item.dayweather === '和风'||item.dayweather === '清风'}}"
+              size="50"></iconfont>
+            <iconfont name="taiyang" wx:if="{{item.dayweather === '晴'}}" size="50"></iconfont>
+            <iconfont name="leizhenyu"
+              wx:if="{{item.dayweather === '阵雨' || item.dayweather === '雷阵雨' || item.dayweather === '强阵雨' || item.dayweather === '强雷阵雨'}}"
+              size="50"></iconfont>
+            <iconfont name="yusan"
+              wx:if="{{item.dayweather === '雨' || item.dayweather === '小雨' || item.dayweather === '毛毛雨/细雨' || item.dayweather === '小雨-中雨'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="xiaoyu" wx:if="{{item.dayweather === '中雨' || item.dayweather === '中雨-大雨'}}" size="50">
+            </iconfont>
+            <iconfont name="xiayu"
+              wx:if="{{item.dayweather === '大雨' || item.dayweather === '暴雨' || item.dayweather === '大暴雨' || item.dayweather === '特大暴雨' || item.dayweather === '极端降雨' || item.dayweather === '大雨' || item.dayweather === '大雨-暴雨' || item.dayweather === '暴雨-大暴雨' || item.dayweather === '大暴雨-特大暴雨'}}"
+              size="50"></iconfont>
+            <iconfont name="daxue" wx:if="{{item.dayweather === '暴雪' || item.dayweather === '大雪-暴雪'}}" size="50">
+            </iconfont>
+            <iconfont name="zhongxue" wx:if="{{item.dayweather === '大雪' || item.dayweather === '中雪-大雪'}}" size="50">
+            </iconfont>
+            <iconfont name="xiaoxue" wx:if="{{item.dayweather === '中雪' || item.dayweather === '小雪-中雪'}}" size="50">
+            </iconfont>
+            <iconfont name="xiaxue"
+              wx:if="{{item.dayweather === '雪' || item.dayweather === '阵雪' || item.dayweather === '小雪' || item.dayweather === '雨雪天气' || item.dayweather === '雨夹雪' || item.dayweather === '阵雨夹雪'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="youwu"
+              wx:if="{{item.dayweather === '雾' || item.dayweather === '浓雾' || item.dayweather === '强浓雾' || item.dayweather === '轻雾' || item.dayweather === '大雾' || item.dayweather === '特强浓雾'}}"
+              size="50"></iconfont>
+            <iconfont name="duoyunyoufeng" wx:if="{{item.dayweather === '多云' || item.dayweather === '晴间多云'}}" size="50">
+            </iconfont>
+            <iconfont name="longjuanfeng"
+              wx:if="{{item.dayweather === '烈风' ||item.dayweather === '风暴' || item.dayweather === '狂爆风' || item.dayweather === '飓风'||item.dayweather === '热带风暴' || item.dayweather === '龙卷风'}}"
+              size="50"></iconfont>
+            <iconfont name="yintian" wx:if="{{item.dayweather === '阴'}}" size="50"></iconfont>
+            <iconfont name="bingbao2" wx:if="{{item.dayweather === '冻雨'}}" size="50"></iconfont>
+            <iconfont name="dawutian"
+              wx:if="{{item.dayweather === '霾' || item.dayweather === '中度霾' || item.dayweather === '重度霾' || item.dayweather === '严重霾'}}"
+              size="50"></iconfont>
+            <iconfont name="dafengyouwu"
+              wx:if="{{item.dayweather === '浮尘' || item.dayweather === '扬沙' || item.dayweather === '沙尘暴' || item.dayweather === '强沙尘暴'}}"
+              size="50"></iconfont>
+            {{item.dayweather}}
+            <view>温度：{{item.daytemp}}℃</view>
+            <view>{{item.daywind}}风：{{item.daypower}}级</view>
 
-        </view>
-        <view class="nightweather-content">
-          <iconfont name="bingbao" wx:if="{{item.nightweather === '雷阵雨并伴有冰雹'}}" size="50"></iconfont>
-          <iconfont name="youfeng" wx:if="{{item.nightweather === '少云'}}" size="50"></iconfont>
-          <iconfont name="dafeng"
-            wx:if="{{item.nightweather === '强风/劲风'||item.nightweather === '疾风'||item.nightweather === '大风'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaofeng"
-            wx:if="{{item.nightweather === '有风' ||item.nightweather === '微风'||item.nightweather === '和风'||item.nightweather === '清风'}}"
-            size="50"></iconfont>
-          <iconfont name="taiyang" wx:if="{{item.nightweather === '晴'}}" size="50"></iconfont>
-          <iconfont name="leizhenyu"
-            wx:if="{{item.nightweather === '阵雨' || item.nightweather === '雷阵雨' || item.nightweather === '强阵雨' || item.nightweather === '强雷阵雨'}}"
-            size="50"></iconfont>
-          <iconfont name="yusan"
-            wx:if="{{item.nightweather === '雨' || item.nightweather === '小雨' || item.nightweather === '毛毛雨/细雨' || item.nightweather === '小雨-中雨'}}"
-            size="50">
-          </iconfont>
-          <iconfont name="xiaoyu" wx:if="{{item.nightweather === '中雨' || item.nightweather === '中雨-大雨'}}" size="50">
-          </iconfont>
-          <iconfont name="xiayu"
-            wx:if="{{item.nightweather === '大雨' || item.nightweather === '暴雨' || item.nightweather === '大暴雨' || item.nightweather === '特大暴雨' || item.nightweather === '极端降雨' || item.nightweather === '大雨' || item.nightweather === '大雨-暴雨' || item.nightweather === '暴雨-大暴雨' || item.nightweather === '大暴雨-特大暴雨'}}"
-            size="50"></iconfont>
-          <iconfont name="daxue" wx:if="{{item.nightweather === '暴雪' || item.nightweather === '大雪-暴雪'}}" size="50">
-          </iconfont>
-          <iconfont name="zhongxue" wx:if="{{item.nightweather === '大雪' || item.nightweather === '中雪-大雪'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaoxue" wx:if="{{item.nightweather === '中雪' || item.nightweather === '小雪-中雪'}}" size="50">
-          </iconfont>
-          <iconfont name="xiaxue"
-            wx:if="{{item.nightweather === '雪' || item.nightweather === '阵雪' || item.nightweather === '小雪' || item.nightweather === '雨雪天气' || item.nightweather === '雨夹雪' || item.nightweather === '阵雨夹雪'}}"
-            size="50">
-          </iconfont>
-          <iconfont name="youwu"
-            wx:if="{{item.nightweather === '雾' || item.nightweather === '浓雾' || item.nightweather === '强浓雾' || item.nightweather === '轻雾' || item.nightweather === '大雾' || item.nightweather === '特强浓雾'}}"
-            size="50"></iconfont>
-          <iconfont name="duoyunyoufeng" wx:if="{{item.nightweather === '多云' || item.nightweather === '晴间多云'}}"
-            size="50">
-          </iconfont>
-          <iconfont name="longjuanfeng"
-            wx:if="{{item.nightweather === '烈风' ||item.nightweather === '风暴' || item.nightweather === '狂爆风' || item.nightweather === '飓风'||item.nightweather === '热带风暴' || item.nightweather === '龙卷风'}}"
-            size="50"></iconfont>
-          <iconfont name="yintian" wx:if="{{item.nightweather === '阴'}}" size="50"></iconfont>
-          <iconfont name="bingbao2" wx:if="{{item.nightweather === '冻雨'}}" size="50"></iconfont>
-          <iconfont name="dawutian"
-            wx:if="{{item.nightweather === '霾' || item.nightweather === '中度霾' || item.nightweather === '重度霾' || item.nightweather === '严重霾'}}"
-            size="50"></iconfont>
-          <iconfont name="dafengyouwu"
-            wx:if="{{item.nightweather === '浮尘' || item.nightweather === '扬沙' || item.nightweather === '沙尘暴' || item.nightweather === '强沙尘暴'}}"
-            size="50"></iconfont>
-          {{item.nightweather}}
-          <view>温度：{{item.nighttemp}}</view>
-          <view>{{item.nightwind}}风：{{item.nightpower}}级</view>
+          </view>
+          <view class="nightweather-content">
+            <iconfont name="bingbao" wx:if="{{item.nightweather === '雷阵雨并伴有冰雹'}}" size="50"></iconfont>
+            <iconfont name="youfeng" wx:if="{{item.nightweather === '少云'}}" size="50"></iconfont>
+            <iconfont name="dafeng"
+              wx:if="{{item.nightweather === '强风/劲风'||item.nightweather === '疾风'||item.nightweather === '大风'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="xiaofeng"
+              wx:if="{{item.nightweather === '有风' ||item.nightweather === '微风'||item.nightweather === '和风'||item.nightweather === '清风'}}"
+              size="50"></iconfont>
+            <iconfont name="taiyang" wx:if="{{item.nightweather === '晴'}}" size="50"></iconfont>
+            <iconfont name="leizhenyu"
+              wx:if="{{item.nightweather === '阵雨' || item.nightweather === '雷阵雨' || item.nightweather === '强阵雨' || item.nightweather === '强雷阵雨'}}"
+              size="50"></iconfont>
+            <iconfont name="yusan"
+              wx:if="{{item.nightweather === '雨' || item.nightweather === '小雨' || item.nightweather === '毛毛雨/细雨' || item.nightweather === '小雨-中雨'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="xiaoyu" wx:if="{{item.nightweather === '中雨' || item.nightweather === '中雨-大雨'}}" size="50">
+            </iconfont>
+            <iconfont name="xiayu"
+              wx:if="{{item.nightweather === '大雨' || item.nightweather === '暴雨' || item.nightweather === '大暴雨' || item.nightweather === '特大暴雨' || item.nightweather === '极端降雨' || item.nightweather === '大雨' || item.nightweather === '大雨-暴雨' || item.nightweather === '暴雨-大暴雨' || item.nightweather === '大暴雨-特大暴雨'}}"
+              size="50"></iconfont>
+            <iconfont name="daxue" wx:if="{{item.nightweather === '暴雪' || item.nightweather === '大雪-暴雪'}}" size="50">
+            </iconfont>
+            <iconfont name="zhongxue" wx:if="{{item.nightweather === '大雪' || item.nightweather === '中雪-大雪'}}" size="50">
+            </iconfont>
+            <iconfont name="xiaoxue" wx:if="{{item.nightweather === '中雪' || item.nightweather === '小雪-中雪'}}" size="50">
+            </iconfont>
+            <iconfont name="xiaxue"
+              wx:if="{{item.nightweather === '雪' || item.nightweather === '阵雪' || item.nightweather === '小雪' || item.nightweather === '雨雪天气' || item.nightweather === '雨夹雪' || item.nightweather === '阵雨夹雪'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="youwu"
+              wx:if="{{item.nightweather === '雾' || item.nightweather === '浓雾' || item.nightweather === '强浓雾' || item.nightweather === '轻雾' || item.nightweather === '大雾' || item.nightweather === '特强浓雾'}}"
+              size="50"></iconfont>
+            <iconfont name="duoyunyoufeng" wx:if="{{item.nightweather === '多云' || item.nightweather === '晴间多云'}}"
+              size="50">
+            </iconfont>
+            <iconfont name="longjuanfeng"
+              wx:if="{{item.nightweather === '烈风' ||item.nightweather === '风暴' || item.nightweather === '狂爆风' || item.nightweather === '飓风'||item.nightweather === '热带风暴' || item.nightweather === '龙卷风'}}"
+              size="50"></iconfont>
+            <iconfont name="yintian" wx:if="{{item.nightweather === '阴'}}" size="50"></iconfont>
+            <iconfont name="bingbao2" wx:if="{{item.nightweather === '冻雨'}}" size="50"></iconfont>
+            <iconfont name="dawutian"
+              wx:if="{{item.nightweather === '霾' || item.nightweather === '中度霾' || item.nightweather === '重度霾' || item.nightweather === '严重霾'}}"
+              size="50"></iconfont>
+            <iconfont name="dafengyouwu"
+              wx:if="{{item.nightweather === '浮尘' || item.nightweather === '扬沙' || item.nightweather === '沙尘暴' || item.nightweather === '强沙尘暴'}}"
+              size="50"></iconfont>
+            {{item.nightweather}}
+            <view>温度：{{item.nighttemp}}℃</view>
+            <view>{{item.nightwind}}风：{{item.nightpower}}级</view>
+          </view>
         </view>
       </view>
     </view>

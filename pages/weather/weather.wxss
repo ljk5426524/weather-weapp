@@ -1,16 +1,14 @@
 /* pages/weather/weather.wxss */
-.content-body{
+.content-body {
+  height: 100vh;
   padding: 30rpx;
   background-color: #f9f9f9;
   box-sizing: border-box;
   min-height: 100vh;
-  background: #56CCF2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-
-
+  /* background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
+  background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
+
 .icon-weather {
   width: 70rpx;
   height: 70rpx;
@@ -24,13 +22,13 @@
 }
 
 .auth-content {
-  box-sizing:border-box;
+  box-sizing: border-box;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding:100rpx 30rpx;
+  padding: 100rpx 30rpx;
 }
 
 .icon-local {
@@ -38,66 +36,86 @@
   height: 150rpx;
   margin-bottom: 100rpx;
 }
-.btn-auth{
+
+.btn-auth {
   color: #228AFF !important;
   border-color: #228AFF !important;
 }
-.auth-tip{
+
+.auth-tip {
   margin-bottom: 100rpx;
   padding: 0 50rpx;
   line-height: 50rpx;
   text-align: center;
 }
-.local-content{
-  padding:  20rpx;
+
+.local-content {
+  padding: 20rpx;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #fff;
+  background-color: #00000033;
+  color: #fff;
   margin-bottom: 20rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 2rpx 5rpx #f9f9f9;
+  box-shadow: 0 0 2rpx 5rpx #00000033;
 }
-.my-icon-local{
+
+.my-icon-local {
   width: 50rpx;
   height: 50rpx;
   margin-right: 20rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
 }
-.next-content{
+
+.next-content {
   padding: 30rpx;
-  background-color: #fff;
-  border-radius: 20rpx;
-  box-shadow: 0 0 2rpx 5rpx #f9f9f9;
+  background-color: #00000033;
+  border-radius: 40rpx;
+  box-shadow: 0 0 2rpx 5rpx #00000033;
   margin-bottom: 30rpx;
+  color: #fff;
 }
-.date-text{
-  font-size:40rpx;
-  color: #228AFF;    
-  border-bottom: 1rpx solid #efefef;
+
+.date-text {
+  font-size: 40rpx;
+  color: #fff;
+  border-bottom: 1rpx solid #efefef4d;
   padding-bottom: 20rpx;
 }
 
-.week-text{
+.week-text {
   margin-left: 20rpx;
   font-size: 24rpx;
-  color: #2a2a2a;
+  color: #fff;
 }
-.dayweather-content,.nightweather-content{
+
+.icon-content {
+  padding: 20rpx;
+  background-color: #ffffffcc;
+  border-radius: 20rpx;
+}
+
+.dayweather-content,
+.nightweather-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 300rpx;
-  padding: 20rpx 0;
+  padding: 30rpx 0 20rpx;
 }
-.time-content{
+
+.time-content {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20rpx 30rpx 40rpx;
 }
 
-.time-sun,.time-moon{
+.time-sun,
+.time-moon {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,8 +124,8 @@
   color: #fff;
 }
 
-.day-sentence{
-  padding: 0 30rpx ;
+.day-sentence {
+  padding: 0 30rpx;
   position: relative;
   height: 300rpx;
   flex-direction: column;
@@ -121,7 +139,8 @@
 
 
 }
-.sentence-from{
+
+.sentence-from {
   margin-left: auto;
   margin-top: 60rpx;
   display: flex;
@@ -129,35 +148,36 @@
   align-items: center;
 }
 
-.banner-content{
+.banner-content {
   position: relative;
 }
-.banner{
+
+.banner {
   width: 100%;
-  height:300rpx;
+  height: 300rpx;
   position: absolute;
 }
 
-.banner-title{
+.banner-title {
   margin-right: auto;
 }
 
-.loading-content{
+.loading-content {
   height: 600rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.hr-content{
+.hr-content {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding-right: 10rpx;
 }
-.hr{
+
+.hr {
   margin-left: 20rpx;
   width: 100%;
-  border-top: 2rpx solid #fff;
+  border-top: 2rpx solid #ffffff4d;
 }
-
